@@ -1,0 +1,10 @@
+
+State Machine - |projeto|estado
+Name estado.ST_LOCK estado.ST_FAIL estado.ST_SET estado.ST_OPEN estado.ST_VERIFY estado.ST_INPUT estado.ST_CLOSE 
+estado.ST_CLOSE 0 0 0 0 0 0 0 
+estado.ST_INPUT 0 0 0 0 0 1 1 
+estado.ST_VERIFY 0 0 0 0 1 0 1 
+estado.ST_OPEN 0 0 0 1 0 0 1 
+estado.ST_SET 0 0 1 0 0 0 1 
+estado.ST_FAIL 0 1 0 0 0 0 1 
+estado.ST_LOCK 1 0 0 0 0 0 1 

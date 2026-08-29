@@ -1,0 +1,48 @@
+-------------------------------------------------------------------------------
+-- atividade6.vhd
+-- Atividade 6 - Lógica Reconfigurável - UTFPR Apucarana
+-- Detector de valor mínimo e máximo para uma quantidade genérica de
+-- entradas, com largura genérica de bits.
+-------------------------------------------------------------------------------
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use work.atividade6_pkg.all;          -- importa slv_array e find_min_max
+
+entity atividade6 is
+    generic (
+        num_inputs : positive := 4;   -- quantidade de valores de entrada
+        num_bits   : positive := 8    -- largura de cada valor (em bits)
+    );
+    port (
+        -- IMPORTANTE: portas declaradas individualmente como std_logic_vector.
+        -- Não usamos slv_array diretamente nas portas pois o ModelSim gera
+        -- erro ao tentar simular com tipos definidos pelo usuário em portas
+        -- com dupla restrição. Fazemos a conversão para slv_array dentro
+        -- da arquitetura.
+        entrada1, entrada2, entrada3, entrada4 :
+            in  std_logic_vector(num_bits-1 downto 0);
+
+        min_out : out std_logic_vector(num_bits-1 downto 0);
+        max_out : out std_logic_vector(num_bits-1 downto 0)
+    );
+end entity atividade6;
+
+-------------------------------------------------------------------------------
+architecture atividade6_arch of atividade6 is
+
+    -- Sinal interno com o tipo definido por nós (no package)
+    signal x : slv_array(0 to num_inputs-1)(num_bits-1 downto 0);
+
+begin
+
+    -- Agrupa as entradas individuais no vetor x (de tipo slv_array).
+    -- Esta é a "ponte" entre as portas (std_logic_vector) e o tipo
+    -- definido pelo usuário (slv_array).
+    x <= (entrada1, entrada2, entrada3, entrada4);
+
+    -- Chamada concorrente do procedure: equivale a um processo implícito
+    -- sensível às entradas. Síntese gera lógica combinacional pura.
+    find_min_max(x, min_out, max_out);
+
+end architecture atividade6_arch;

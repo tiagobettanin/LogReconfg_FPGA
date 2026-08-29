@@ -1,0 +1,19 @@
+library ieee ;
+use ieee.std_logic_1164.all ;
+-- ------------------------------------
+entity projeto is
+	generic (
+		S: integer := 4;
+		M: integer := 8
+	) ;
+	port (
+		N: in  bit_vector((2**S * M) - 1 downto 0);
+		selecao: in integer range 0 to (2**S)-1;
+		z: out bit_vector(M - 1 downto 0)
+	);
+end entity ;
+-- ------------------------------------
+architecture projeto of projeto is
+begin
+    z <= N( ((selecao + 1) * M) - 1 downto (selecao * M) );
+end architecture;
