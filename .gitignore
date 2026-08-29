@@ -1,0 +1,63 @@
+# ============================================================
+# Intel Quartus Prime / FPGA
+# ============================================================
+
+# Diretórios gerados automaticamente pelo Quartus
+**/db/
+**/incremental_db/
+**/output_files/
+**/simulation/
+**/greybox_tmp/
+**/qdb/
+**/.qsys_edit/
+
+# Arquivos de workspace e temporários do Quartus
+*.qws
+*.bak
+*.tmp
+*.temp
+*.orig
+
+# Relatórios e arquivos gerados pela compilação
+*.rpt
+*.summary
+*.smsg
+*.chg
+*.done
+
+# Arquivos de programação gerados
+*.sof
+*.pof
+*.jic
+*.jdi
+
+# ============================================================
+# ModelSim / QuestaSim
+# ============================================================
+
+**/work/
+transcript
+vsim.wlf
+
+# ============================================================
+# Sistema operacional
+# ============================================================
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+# ============================================================
+# Editores
+# ============================================================
+
+# VS Code - configurações locais
+.vscode/
+
+# Arquivos temporários
+*~
+*.swp
+*.swo
